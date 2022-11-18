@@ -5,7 +5,7 @@ import SearchBox from './SearchBox';
 import './App.css';
 
 //generate how much robots:
-let robots = generateRobots(5);
+let robots = generateRobots(100);
 
 // const App = () => { 
 //     return (
