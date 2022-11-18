@@ -32,7 +32,7 @@ const generateRobots = function(totalName) {
         robots.push(
             {
                 id: i+1,
-                fullName: firstName + " " + lastName,
+                name: firstName + " " + lastName,
                 userName: userName,
                 email: email,
             }

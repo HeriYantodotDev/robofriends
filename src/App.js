@@ -17,32 +17,55 @@ let robots = generateRobots(100);
 //     );
 // }
 
+
 class App extends Component {
     constructor () {
         super();
         this.state = {
-            robots: robots,
+            totalRobot : 0,
+            robots: [],
             searchfield: ''    
         }
     }
 
+// the short line
+componentDidMount() {
+    // fetch('https://jsonplaceholder.typicode.com/users')
+    //     .then(response => response.json())
+    //     .then(users => this.setState({robots: users}));
+
+    this.setState({robots:robots});
+}
+
+// the long line
+// componentDidMount() {
+//     fetch('https://jsonplaceholder.typicode.com/users')
+//         .then(response => {
+//             return response.json();
+//         })
+//         .then(users => {
+//             this.setState({robots: users});
+//          })
+// }
+
     onSearchChange = (event) => {
-      
         this.setState({searchfield: event.target.value});
     }
 
     render () {
         const filteredRobots = this.state.robots.filter(robots => {
-            return robots.fullName.toLowerCase().includes(this.state.searchfield.toLowerCase()); 
+            return robots.name.toLowerCase().includes(this.state.searchfield.toLowerCase()); 
         })
+
+
         return (
             <div className="tc">
                 <h1>RoboFriends</h1>
                 <SearchBox searchChange = {this.onSearchChange} />
-                <Cardlist robots={filteredRobots}/>
+                <Cardlist robots={filteredRobots}  />
             </div>
             );
-    }
-}
+            }
+        }
 
 export default App;
