@@ -1,3 +1,7 @@
+#Robofriends App
+
+This simple React App renders several cards containing random images, names, and emails. I created this app with the help of the Udemy Course: [“The Complete Web Developer: Zero to Master”](https://www.udemy.com/course/the-complete-web-developer-zero-to-mastery/).
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
