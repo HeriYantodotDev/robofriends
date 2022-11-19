@@ -18,7 +18,7 @@ const Cardlist = ({robots}) => {
     //     />)
     // })
 
-    if (robots.length === 0) {
+    if (!robots.length) {
         return <h1 className="tc">Loading</h1>
     } else {
         return (

@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import Cardlist from "./Cardlist";
-import { generateRobots } from "./robots";
-import SearchBox from './SearchBox';
-import './App.css';
-
+import Cardlist from "../components/Cardlist";
+import { generateRobots } from "../robots";
+import SearchBox from '../components/SearchBox';
+import Scroll from "../components/Scroll";
+import './App.css'
 //generate how much robots:
 let robots = generateRobots(100);
 
@@ -53,8 +53,9 @@ componentDidMount() {
     }
 
     render () {
-        const filteredRobots = this.state.robots.filter(robots => {
-            return robots.name.toLowerCase().includes(this.state.searchfield.toLowerCase()); 
+        const {robots, searchfield} = this.state;
+        const filteredRobots = robots.filter(robot => {
+            return robot.name.toLowerCase().includes(searchfield.toLowerCase()); 
         })
 
 
@@ -62,7 +63,9 @@ componentDidMount() {
             <div className="tc">
                 <h1>RoboFriends</h1>
                 <SearchBox searchChange = {this.onSearchChange} />
-                <Cardlist robots={filteredRobots}  />
+                <Scroll>
+                    <Cardlist robots={filteredRobots}  />
+                </Scroll>
             </div>
             );
             }
