@@ -4,8 +4,8 @@ import { generateRobots } from "../robots";
 import SearchBox from '../components/SearchBox';
 import Scroll from "../components/Scroll";
 import './App.css'
+import InputBox from "../components/InputBox";
 //generate how much robots:
-let robots = generateRobots(100);
 
 // const App = () => { 
 //     return (
@@ -16,6 +16,8 @@ let robots = generateRobots(100);
 //     </div>
 //     );
 // }
+
+
 
 
 class App extends Component {
@@ -34,7 +36,7 @@ componentDidMount() {
     //     .then(response => response.json())
     //     .then(users => this.setState({robots: users}));
 
-    this.setState({robots:robots});
+    this.setState({robots: []});
 }
 
 // the long line
@@ -52,6 +54,18 @@ componentDidMount() {
         this.setState({searchfield: event.target.value});
     }
 
+    onClickGenerateRobots = (event) => {
+        if (event.target.parentElement.children[1].value > 200 ) {
+            alert("Can't have more than 200 robots!");
+            event.target.parentElement.children[1].value = 0
+            this.setState({robots:[]})
+        } else {
+            this.setState({robots: generateRobots(event.target.parentElement.children[1].value)})
+        }
+    }
+
+
+
     render () {
         const {robots, searchfield} = this.state;
         const filteredRobots = robots.filter(robot => {
@@ -62,6 +76,7 @@ componentDidMount() {
         return (
             <div className="tc">
                 <h1>RoboFriends</h1>
+                <InputBox clickGenerate = {this.onClickGenerateRobots} checkRobot = {this.checkNumberofRobots}/>
                 <SearchBox searchChange = {this.onSearchChange} />
                 <Scroll>
                     <Cardlist robots={filteredRobots}  />

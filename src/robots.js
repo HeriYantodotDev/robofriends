@@ -20,15 +20,14 @@ const generateEmail = function(userName) {
     return userName + "@gmail.com";
 }
 
-const robots = [
-];
 
 const generateRobots = function(totalName) {
+    let robots =[];
     for (let i=0; i< totalName; i++) {
-        let firstName = generateFirstName();
-        let lastName = generateLastName();
-        let userName = generateUserName(firstName,lastName);
-        let email = generateEmail(userName);
+        const firstName = generateFirstName();
+        const lastName = generateLastName();
+        const userName = generateUserName(firstName,lastName);
+        const email = generateEmail(userName);
         robots.push(
             {
                 id: i+1,
@@ -37,10 +36,9 @@ const generateRobots = function(totalName) {
                 email: email,
             }
         )
+
     }
     return robots
 }
-
-
 
 export {generateRobots};

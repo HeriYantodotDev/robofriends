@@ -19,7 +19,12 @@ const Cardlist = ({robots}) => {
     // })
 
     if (!robots.length) {
-        return <h1 className="tc">Loading</h1>
+        return (
+            <div>
+                <h1 className="tc system-sans-serif">No Robots🤖!!!</h1>
+                <p className="tc system-sans-serif">🔢 Input Number of Robots / ⌨️ Type the names correctly</p>
+            </div>
+        )
     } else {
         return (
             <Fragment>
