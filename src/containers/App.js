@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Cardlist from "../components/Cardlist";
-import { generateRobots } from "../robots";
+import generateRobots from "../robots";
 import SearchBox from '../components/SearchBox';
 import Scroll from "../components/Scroll";
 import './App.css'
@@ -16,9 +16,6 @@ import InputBox from "../components/InputBox";
 //     </div>
 //     );
 // }
-
-
-
 
 class App extends Component {
     constructor () {
@@ -60,7 +57,7 @@ componentDidMount() {
             event.target.parentElement.children[1].value = 0
             this.setState({robots:[]})
         } else {
-            this.setState({robots: generateRobots(event.target.parentElement.children[1].value)})
+            this.setState({robots: generateRobots.generate(event.target.parentElement.children[1].value)})
         }
     }
 
