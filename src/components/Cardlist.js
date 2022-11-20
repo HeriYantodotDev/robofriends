@@ -21,8 +21,8 @@ const Cardlist = ({robots}) => {
     if (!robots.length) {
         return (
             <div>
-                <h1 className="tc system-sans-serif">No Robots🤖!!!</h1>
-                <p className="tc system-sans-serif">🔢 Input Number of Robots / ⌨️ Type the names correctly</p>
+                <h1 className="tc system-sans-serif">No Robots<span role={'img'} aria-label={'Robot'}>🤖</span>!!!</h1>
+                <p className="tc system-sans-serif"><span role={'img'} aria-label={'number'}>🔢</span> Input Number of Robots / <span role={'img'} aria-label={'keyboard'}>⌨️</span> Type the names correctly</p>
             </div>
         )
     } else {
