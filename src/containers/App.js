@@ -5,6 +5,8 @@ import SearchBox from '../components/SearchBox';
 import Scroll from "../components/Scroll";
 import './App.css'
 import InputBox from "../components/InputBox";
+import ErrorBoundry from "../components/ErrorBoundry";
+
 //generate how much robots:
 
 // const App = () => { 
@@ -52,12 +54,15 @@ componentDidMount() {
     }
 
     onClickGenerateRobots = (event) => {
+        // console.log(event.target.parentElement.parentElement.children[2].children[0].value);
+        event.target.parentElement.parentElement.children[2].children[0].value = '';
+        this.setState({searchfield:event.target.parentElement.parentElement.children[2].children[0].value });
         if (event.target.parentElement.children[1].value > 200 ) {
             alert("Can't have more than 200 robots!");
-            event.target.parentElement.children[1].value = 0
+            event.target.parentElement.children[1].value = 0;
             this.setState({robots:[]})
         } else {
-            this.setState({robots: generateRobots.generate(event.target.parentElement.children[1].value)})
+            this.setState({robots: generateRobots.generate(event.target.parentElement.children[1].value)});
         }
     }
 
@@ -76,7 +81,9 @@ componentDidMount() {
                 <InputBox clickGenerate = {this.onClickGenerateRobots} checkRobot = {this.checkNumberofRobots}/>
                 <SearchBox searchChange = {this.onSearchChange} />
                 <Scroll>
-                    <Cardlist robots={filteredRobots}  />
+                    <ErrorBoundry>
+                        <Cardlist robots={filteredRobots}  />
+                    </ErrorBoundry>
                 </Scroll>
             </div>
             );
