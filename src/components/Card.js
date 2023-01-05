@@ -13,10 +13,10 @@ import React from "react";
 // }
 
 //we can also use destructuring like this : 
-const Card = ({id, name, email}) => {
+const Card = ({id, name, email, roboTypeCreate}) => {
     return (
         <div className="bg-light-green dib bor3 pa3 ma2 grow bw2 shadow-5">
-            <img src= {`https://robohash.org/${id}?200x200`} alt="a beautiful robot"></img>
+            <img src= {`https://robohash.org/${id}${roboTypeCreate}`} alt="a beautiful robot"></img>
             <div>
                 <h2>{name}</h2>
                 <p>{email}</p>
