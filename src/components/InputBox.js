@@ -9,12 +9,13 @@ const options = [
   ]
 
 const InputBox = ({clickGenerate, typeChange}) => {
+    // flex justify-center items-center
     return (
-            <div className="pa2 flex justify-center items-center ">
+            <div className="pa2 ">
                 <span className="pa2">Number of Robots(Max 80)? </span>
-                <input id = "numRobot" className="pa2 b--dashed br4 w-10 tc" type="number" min="0" max="80" placeholder="0" ></input>
+                <input id = "numRobot" className="pa2 b--dashed br4 w-15 tc" type="number" min="0" max="80" placeholder="0" ></input>
                 <Select 
-                    className="pa2 w-15" options={options} placeholder="Select Robo Type"
+                    className="pa2 w-15 inline-flex" options={options} placeholder="Select Robo Type"
                     onChange={(choice) => typeChange(choice)}
                 />
                 <a className="pa2 tc f6 link dim br-pill ba bw1 ph3 pv2 dib hot-pink" href="#0" onClick={clickGenerate}>Generate Robot</a>
