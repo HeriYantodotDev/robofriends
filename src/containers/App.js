@@ -10,6 +10,8 @@ import ErrorBoundry from "../components/ErrorBoundry";
 function App() {
     const [robots, setRobots] = useState([]);
     const [searchfield, setSearchfield] = useState(''); 
+    const [roboType, setRoboType] = useState('');
+    const [roboTypeCreate, setRoboTypeCreate] = useState('');
 
     useEffect(() => {
         setRobots([]);
@@ -24,33 +26,38 @@ function App() {
         event.target.parentElement.parentElement.children[2].children[0].value = '';
         setSearchfield(event.target.parentElement.parentElement.children[2].children[0].value);
 
-        if (event.target.parentElement.children[1].value > 200 ) {
-            alert("Can't have more than 200 robots!");
+        if (event.target.parentElement.children[1].value > 80 ) {
+            alert("Can't have more than 80 robots!");
             event.target.parentElement.children[1].value = 0;
             setRobots([]);
         } else {
-            setRobots(generateRobots.generate(event.target.parentElement.children[1].value))
+            setRoboTypeCreate(roboType);
+            setRobots(generateRobots.generate(event.target.parentElement.children[1].value));
+            // console.log(event.target.parentElement.children[2].children[2].children[0].children[0].innerHTML)
         }
     }
 
-        const filteredRobots = robots.filter(robot => {
-            return robot.name.toLowerCase().includes(searchfield.toLowerCase()); 
-        })
+    const filteredRobots = robots.filter(robot => {
+        return robot.name.toLowerCase().includes(searchfield.toLowerCase()); 
+    })
 
+    const onTypeChange = (choice) => {
+        setRoboType(choice.value);
+    }
 
-        return (
-            <div className="tc">
-                <h1>RoboFriends</h1>
-                <InputBox clickGenerate = {onClickGenerateRobots}/>
-                <SearchBox searchChange = {onSearchChange} />
-                <Scroll>
-                    <ErrorBoundry>
-                        <Cardlist robots={filteredRobots}  />
-                    </ErrorBoundry>
-                </Scroll>
-            </div>
-            );
-            }
+    return (
+        <div className="tc">
+            <h1>RoboFriends</h1>
+            <InputBox clickGenerate = {onClickGenerateRobots} typeChange = {onTypeChange}/>
+            <SearchBox searchChange = {onSearchChange} />
+            <Scroll>
+                <ErrorBoundry>
+                    <Cardlist robots={filteredRobots} roboTypeCreate={roboTypeCreate}  />
+                </ErrorBoundry>
+            </Scroll>
+        </div>
+        );
+        }
 
 
 // class App extends Component {

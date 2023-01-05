@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import Card from "./Card";
 
 
-const Cardlist = ({robots}) => {
+const Cardlist = ({robots, roboTypeCreate}) => {
     // let cardComponent = [];
     // for (let i=0; i<20; i++) {
     //     cardComponent.push(<Card id={robots[i].id} name={robots[i].fullName} email = {robots[i].email} />);
@@ -34,6 +34,7 @@ const Cardlist = ({robots}) => {
                             id={robots[i].id} 
                             name={robots[i].name} 
                             email = {robots[i].email} 
+                            roboTypeCreate={roboTypeCreate} 
                             />);
                    } 
                    )
