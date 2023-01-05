@@ -10,3 +10,4 @@ I extended several things like:
 * 🔵 A function to check the maximum number of robot profiles what we like to render (error pop up & clear the input field),
 * 🔵 An input component consists of a text input and a button,
 * 🔵 A component to be rendered if no robot found.
+* 🔵 an additional feature: an option to choose what kind of robots to be rendered: `Robo-Weirdos` - `Robo-Monsters` - `Robo-Smiles` - `Robo-Kittens`
